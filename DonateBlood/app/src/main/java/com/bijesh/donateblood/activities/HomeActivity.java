@@ -2,6 +2,8 @@ package com.bijesh.donateblood.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.widget.Toolbar;
+
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.base.ui.BaseActivity;
@@ -13,6 +15,9 @@ import com.bijesh.donateblood.fragments.NavigationDrawerFragment;
  */
 public class HomeActivity extends ActionBarActivity {
 
+
+    private Toolbar mToolBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,11 +25,13 @@ public class HomeActivity extends ActionBarActivity {
 
 
 //        set tool bar here
+        mToolBar = (Toolbar)findViewById(R.id.app_toolbar);
+        setSupportActionBar(mToolBar);
 
 
 //        set navigation drawer here
-        NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().
-                findFragmentById(R.id.fragment_nav_drawer);
+//        NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().
+//                findFragmentById(R.id.fragment_nav_drawer);
 
 
     }
