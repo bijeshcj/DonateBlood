@@ -30,8 +30,8 @@ public class HomeActivity extends ActionBarActivity {
 
 
 //        set navigation drawer here
-//        NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().
-//                findFragmentById(R.id.fragment_nav_drawer);
+        NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().
+                findFragmentById(R.id.fragment_nav_drawer);
 
 
     }
