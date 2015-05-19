@@ -29,6 +29,7 @@ public class HomeActivity extends ActionBarActivity {
         mToolBar = (Toolbar)findViewById(R.id.app_toolbar);
         setSupportActionBar(mToolBar);
 
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
 //        set navigation drawer here
         NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().

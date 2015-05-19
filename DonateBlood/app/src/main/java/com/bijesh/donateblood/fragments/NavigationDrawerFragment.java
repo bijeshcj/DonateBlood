@@ -4,6 +4,7 @@ package com.bijesh.donateblood.fragments;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,10 @@ import com.bijesh.donateblood.R;
  * A simple {@link Fragment} subclass.
  */
 public class NavigationDrawerFragment extends Fragment {
+
+
+    private ActionBarDrawerToggle mActionBarDrawerToggle;
+    private DrawerLayout mDrawerLayout;
 
 
     public NavigationDrawerFragment() {
@@ -32,6 +37,28 @@ public class NavigationDrawerFragment extends Fragment {
 
 
     public void setUp(DrawerLayout drawerLayout,Toolbar toolbar) {
+            this.mDrawerLayout = drawerLayout;
+        mActionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(),drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+                getActivity().invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                getActivity().invalidateOptionsMenu();
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
+        mDrawerLayout.post(new Runnable() {
+            @Override
+            public void run() {
+                mActionBarDrawerToggle.syncState();
+            }
+        });
 
     }
 }
