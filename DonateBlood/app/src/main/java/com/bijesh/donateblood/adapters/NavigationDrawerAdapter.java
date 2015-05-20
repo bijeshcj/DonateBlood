@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.models.ui.NavigationDrawerOptions;
@@ -23,10 +24,12 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
 
     private LayoutInflater inflater;
     private List<NavigationDrawerOptions> mOptionsList = Collections.emptyList();
+    private Context mContext;
 
     public NavigationDrawerAdapter(Context context,List<NavigationDrawerOptions> data){
         inflater = LayoutInflater.from(context);
         this.mOptionsList = data;
+        this.mContext = context;
     }
 
 
@@ -49,13 +52,19 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
 
-    class NavigationDrawerViewHolder extends RecyclerView.ViewHolder{
+    class NavigationDrawerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView txtOption;
 
         public NavigationDrawerViewHolder(View itemView) {
             super(itemView);
             txtOption = (TextView) itemView.findViewById(R.id.txtView_navigation_drawer);
+            txtOption.setOnClickListener(this);
+        }
+
+        @Override
+        public void onClick(View view) {
+            Toast.makeText(mContext,"Selected "+getAdapterPosition(),Toast.LENGTH_LONG).show();
         }
     }
 
