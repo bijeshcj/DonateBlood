@@ -7,8 +7,6 @@ import android.support.v7.widget.Toolbar;
 
 
 import com.bijesh.donateblood.R;
-import com.bijesh.donateblood.base.ui.BaseActivity;
-import com.bijesh.donateblood.base.ui.BaseFragmentActivity;
 import com.bijesh.donateblood.fragments.NavigationDrawerFragment;
 import com.parse.ParseObject;
 

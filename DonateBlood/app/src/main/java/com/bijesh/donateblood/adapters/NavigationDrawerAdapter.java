@@ -19,17 +19,22 @@ import java.util.List;
 /**
  * Created by bijesh on 5/20/2015.
  */
-public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.NavigationDrawerViewHolder> {
+public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDrawerAdapter.NavigationDrawerViewHolder>{
 
 
     private LayoutInflater inflater;
     private List<NavigationDrawerOptions> mOptionsList = Collections.emptyList();
     private Context mContext;
+    private NavigationDrawerClickListener clickListener;
 
     public NavigationDrawerAdapter(Context context,List<NavigationDrawerOptions> data){
         inflater = LayoutInflater.from(context);
         this.mOptionsList = data;
         this.mContext = context;
+    }
+
+    public void setClickListener(NavigationDrawerClickListener clickListener){
+        this.clickListener = clickListener;
     }
 
 
@@ -52,6 +57,8 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     }
 
 
+
+
     class NavigationDrawerViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView txtOption;
@@ -59,13 +66,21 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
         public NavigationDrawerViewHolder(View itemView) {
             super(itemView);
             txtOption = (TextView) itemView.findViewById(R.id.txtView_navigation_drawer);
-            txtOption.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
+
 
         @Override
         public void onClick(View view) {
-            Toast.makeText(mContext,"Selected "+getAdapterPosition(),Toast.LENGTH_LONG).show();
+            if(clickListener != null){
+               clickListener.onNavigationItemClick(view,getAdapterPosition());
+            }
         }
+    }
+
+
+    public interface NavigationDrawerClickListener{
+        public void onNavigationItemClick(View view,int position);
     }
 
 

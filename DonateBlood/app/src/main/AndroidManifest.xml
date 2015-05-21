@@ -22,6 +22,7 @@
         </activity>
         <activity android:name=".activities.SplashActivity" />
         <activity android:name=".activities.LoginActivity" />
+        <activity android:name=".activities.DonateActivity" />
     </application>
 
 </manifest>
