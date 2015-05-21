@@ -10,6 +10,7 @@ import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.base.ui.BaseActivity;
 import com.bijesh.donateblood.base.ui.BaseFragmentActivity;
 import com.bijesh.donateblood.fragments.NavigationDrawerFragment;
+import com.parse.ParseObject;
 
 /**
  * Created by bijesh on 5/13/2015.
@@ -34,7 +35,13 @@ public class HomeActivity extends ActionBarActivity {
 //        set navigation drawer here
         NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().
                 findFragmentById(R.id.fragment_nav_drawer);
-        navigationDrawerFragment.setUp((DrawerLayout)findViewById(R.id.drawer_layout),mToolBar);
+        navigationDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout), mToolBar);
+
+
+
+        ParseObject testObject = new ParseObject("TestObject");
+        testObject.put("foo", "bar");
+        testObject.saveInBackground();
 
 
     }
