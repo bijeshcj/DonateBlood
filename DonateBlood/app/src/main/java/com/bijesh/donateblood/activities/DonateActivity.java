@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
-import android.widget.TextView;
+
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.utils.phone.PhoneUtils;
