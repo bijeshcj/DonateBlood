@@ -9,10 +9,13 @@ import com.parse.Parse;
  */
 public class DonateBloodApplication extends Application {
 
+    private static DonateBloodApplication mInstance;
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        mInstance = this;
 
 
         // Enable Local Datastore.
@@ -22,4 +25,10 @@ public class DonateBloodApplication extends Application {
 
 
     }
+
+    public synchronized static DonateBloodApplication getInstance(){
+        return mInstance;
+    }
+
+
 }

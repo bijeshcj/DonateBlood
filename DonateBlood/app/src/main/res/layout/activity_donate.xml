@@ -1,18 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/splash"
+    android:orientation="vertical">
 
 
     <include
         android:id="@+id/app_toolbar"
         layout="@layout/app_bar" />
 
+
     <TextView
-        android:layout_below="@id/app_toolbar"
+        android:id="@+id/regHeader"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Donate registration form"
-        />
+        android:layout_below="@+id/app_toolbar"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="@dimen/screenPaddingLeft"
+        android:text="Register your details"
+        android:textColor="@color/screen_text_color"
+        android:textSize="@dimen/textSizeOnScreens" />
+
+
+    <EditText
+        android:id="@+id/edtTxtMobile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/regHeader"
+        android:layout_marginTop="20dp"
+        android:hint="Enter your phone number"
+        android:inputType="number"
+        android:paddingLeft="@dimen/screenPaddingLeft"
+        android:singleLine="true"
+        android:textColor="@color/screen_text_color"
+        android:textSize="@dimen/textSizeOnScreens" />
+
+
+    <EditText
+        android:id="@+id/edtTxtName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/edtTxtMobile"
+        android:layout_marginTop="20dp"
+        android:hint="Enter your first name"
+        android:paddingLeft="@dimen/screenPaddingLeft"
+        android:singleLine="true"
+        android:textColor="@color/screen_text_color"
+        android:textSize="@dimen/textSizeOnScreens" />
+
+
+    <RelativeLayout
+        android:paddingLeft="@dimen/screenPaddingLeft"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/edtTxtName">
+
+
+        <TextView
+            android:id="@+id/text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Select Gender"
+            android:textColor="@color/screen_text_color"
+            android:textSize="@dimen/textSizeOnScreens"
+            />
+
+
+        <RadioGroup
+            android:id="@+id/myRadioGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/text"
+            android:checkedButton="@+id/sound">
+
+            <RadioButton
+                android:id="@+id/sound"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/vibration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+    </RelativeLayout>
+
 
 </RelativeLayout>
