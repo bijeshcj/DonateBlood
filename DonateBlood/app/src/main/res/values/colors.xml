@@ -17,4 +17,8 @@
     <color name="edit_text_color">#212121</color>
 
 
+
+    <color name="nav_drawer_menu_background">#0D3638</color>
+
+
 </resources>
