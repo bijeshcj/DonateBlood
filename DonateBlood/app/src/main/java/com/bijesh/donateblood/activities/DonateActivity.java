@@ -4,6 +4,8 @@ package com.bijesh.donateblood.activities;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+import android.view.View;
 import android.widget.EditText;
 
 
@@ -15,6 +17,7 @@ import com.bijesh.donateblood.utils.phone.PhoneUtils;
  */
 public class DonateActivity extends ActionBarActivity {
 
+    private static final String TAG = DonateActivity.class.getCanonicalName();
     private Toolbar mToolBar;
     private EditText extTxtMobile;
 
@@ -27,7 +30,15 @@ public class DonateActivity extends ActionBarActivity {
         mToolBar = (Toolbar)findViewById(R.id.app_toolbar);
         setSupportActionBar(mToolBar);
 
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.d(TAG, "toolbar clicked ");
+                finish();
+            }
+        });
 
         initComponents();
 

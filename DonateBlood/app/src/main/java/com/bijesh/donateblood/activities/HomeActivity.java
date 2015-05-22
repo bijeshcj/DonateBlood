@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 
 
 import com.bijesh.donateblood.R;
@@ -16,7 +17,9 @@ import com.parse.ParseObject;
 public class HomeActivity extends ActionBarActivity {
 
 
+    private static final String TAG = HomeActivity.class.getCanonicalName();
     private Toolbar mToolBar;
+    private DrawerLayout mDrawerLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,7 +36,11 @@ public class HomeActivity extends ActionBarActivity {
 //        set navigation drawer here
         NavigationDrawerFragment navigationDrawerFragment = (NavigationDrawerFragment)getSupportFragmentManager().
                 findFragmentById(R.id.fragment_nav_drawer);
-        navigationDrawerFragment.setUp((DrawerLayout) findViewById(R.id.drawer_layout), mToolBar);
+
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        navigationDrawerFragment.setUp(mDrawerLayout, mToolBar);
+
 
 
 
@@ -42,5 +49,15 @@ public class HomeActivity extends ActionBarActivity {
         testObject.saveInBackground();
 
 
+    }
+
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.d(TAG, "onResume");
+        if(mDrawerLayout != null){
+            mDrawerLayout.closeDrawers();
+        }
     }
 }
