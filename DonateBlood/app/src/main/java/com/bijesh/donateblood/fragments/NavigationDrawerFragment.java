@@ -17,6 +17,7 @@ import android.widget.Toast;
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.activities.DonateActivity;
+import com.bijesh.donateblood.activities.NeedActivity;
 import com.bijesh.donateblood.adapters.NavigationDrawerAdapter;
 import com.bijesh.donateblood.models.ui.NavigationDrawerOptions;
 import com.bijesh.donateblood.utils.BaseUtils;
@@ -98,6 +99,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 startActivity(new Intent(getActivity(), DonateActivity.class));
                 break;
             case 1:
+                startActivity(new Intent(getActivity(), NeedActivity.class));
                 break;
             case 2:
                 BaseUtils.shareApplication(getActivity());

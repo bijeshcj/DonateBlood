@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@mipmap/donat_screen_bg"
+    >
+
+    <include
+        android:id="@+id/app_toolbar"
+        layout="@layout/app_bar" />
+
+
+    <ScrollView
+        android:layout_below="@id/app_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/requestHeader"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:paddingLeft="@dimen/screenPaddingLeft"
+                android:text="Request all donors"
+                android:textColor="@color/screen_text_color"
+                android:textSize="@dimen/textSizeOnScreens" />
+
+
+            <EditText
+                android:id="@+id/edtTxtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/requestHeader"
+                android:layout_marginTop="20dp"
+                android:hint="Enter your Email"
+                android:paddingLeft="@dimen/screenPaddingLeft"
+                android:singleLine="true"
+                android:textColor="@color/screen_text_color"
+                android:textSize="@dimen/textSizeOnScreens" />
+
+            <EditText
+                android:id="@+id/edtTxtMobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edtTxtEmail"
+                android:layout_marginTop="20dp"
+                android:hint="Enter your phone number"
+                android:inputType="number"
+                android:paddingLeft="@dimen/screenPaddingLeft"
+                android:singleLine="true"
+                android:textColor="@color/screen_text_color"
+                android:textSize="@dimen/textSizeOnScreens" />
+
+            <EditText
+                android:id="@+id/edtTxtName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/edtTxtMobile"
+                android:layout_marginTop="20dp"
+                android:hint="Enter your first name"
+                android:paddingLeft="@dimen/screenPaddingLeft"
+                android:singleLine="true"
+                android:textColor="@color/screen_text_color"
+                android:textSize="@dimen/textSizeOnScreens" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/spinner_layout"
+                android:paddingLeft="@dimen/screenPaddingLeft"
+                android:layout_below="@id/edtTxtName"
+                android:layout_marginTop="15dp"
+                android:orientation="vertical"
+                >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Choose blood group"
+                    android:textColor="@color/screen_text_color"
+                    android:textSize="@dimen/textSizeOnScreens"
+                    />
+
+
+                <Spinner
+
+                    android:id="@+id/spinnerBloodGroup"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:entries="@array/blood_group_arrays"
+                    android:prompt="@string/group_prompt" />
+
+
+            </LinearLayout>
+
+
+            <EditText
+                android:id="@+id/edtTxtDesc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/spinner_layout"
+                android:hint="Describe about the emergency, contact info, address and any other information you would like to share with all the donors."
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+
+                android:layout_alignParentBottom="true"
+                android:gravity="center"
+                android:layout_below="@id/edtTxtDesc"
+                >
+
+
+                <Button
+                    android:clickable="true"
+                    android:layout_width="200dp"
+                    android:layout_height="wrap_content"
+                    android:text="Lets pray together"
+                    android:id="@+id/btnRegister"
+                    android:background="@color/accent"
+                    />
+
+            </LinearLayout>
+
+
+
+
+        </RelativeLayout>
+
+
+    </ScrollView>
+
+</RelativeLayout>

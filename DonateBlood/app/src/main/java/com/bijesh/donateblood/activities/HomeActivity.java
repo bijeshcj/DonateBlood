@@ -63,8 +63,7 @@ public class HomeActivity extends ActionBarActivity {
 
 
         ParsePush.subscribeInBackground("Donate");
-        List<String> allChannels = ParseInstallation.getCurrentInstallation().getList("channels");
-        Log.d(TAG,"all channels "+allChannels);
+
         sendPush();
 
 
