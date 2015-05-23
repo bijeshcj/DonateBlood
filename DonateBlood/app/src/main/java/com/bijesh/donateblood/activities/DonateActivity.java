@@ -12,10 +12,12 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.models.ui.Donor;
+import com.bijesh.donateblood.models.ui.Validator;
 import com.bijesh.donateblood.utils.ModelPopulateUtil;
 import com.bijesh.donateblood.utils.ValidationUtils;
 import com.bijesh.donateblood.utils.phone.PhoneUtils;
@@ -98,9 +100,8 @@ public class DonateActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Donor donor = populateDonor();
-                  if(ValidationUtils.validateDonateScreen(donor)){
-
-
+                Validator validator = ValidationUtils.validateDonateScreen(donor);
+                  if(validator.isFlag()){
                       ParseObject regObject = new ParseObject("Donor");
                       regObject.put("email",donor.getEmail());
                       regObject.put("name",donor.getName());
@@ -108,7 +109,8 @@ public class DonateActivity extends ActionBarActivity {
                       regObject.put("above18","yes");
                       regObject.put("bloodGroup",donor.getBloodGroup());
                       regObject.saveInBackground();
-
+                  }else{
+                      Toast.makeText(DonateActivity.this,validator.getMessage(),Toast.LENGTH_LONG).show();
                   }
             }
         });
@@ -128,9 +130,9 @@ public class DonateActivity extends ActionBarActivity {
         String name = edtTxtName.getText().toString();
         String gender = mRadioButton.getText().toString();
 
-        Log.d(TAG,"Donor details "+email+" name "+name+" gender "+gender+" bldgrp "+mBloodGroup);
+        Log.d(TAG,"Donor details: email "+email+" phone "+phone+" name "+name+" gender "+gender+" bldgrp "+mBloodGroup);
 
-        donor = new Donor(email,name,gender,"yes",mBloodGroup);
+        donor = new Donor(email,phone,name,gender,"yes",mBloodGroup);
 
 
 

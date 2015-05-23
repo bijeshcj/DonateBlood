@@ -6,17 +6,27 @@ package com.bijesh.donateblood.models.ui;
 public class Donor {
 
     private String email;
+    private String phone;
     private String name;
     private String gender;
     private String above18;
     private String bloodGroup;
 
-    public Donor(String email,String name,String gender,String above18,String bloodGroup){
+    public Donor(String email,String phone,String name,String gender,String above18,String bloodGroup){
         this.email = email;
+        this.phone = phone;
         this.name = name;
         this.gender = gender;
         this.above18 = above18;
         this.bloodGroup = bloodGroup;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getEmail() {
