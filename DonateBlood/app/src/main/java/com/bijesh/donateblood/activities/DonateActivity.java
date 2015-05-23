@@ -21,7 +21,9 @@ import com.bijesh.donateblood.models.ui.Validator;
 import com.bijesh.donateblood.utils.ModelPopulateUtil;
 import com.bijesh.donateblood.utils.ValidationUtils;
 import com.bijesh.donateblood.utils.phone.PhoneUtils;
+import com.parse.ParseException;
 import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 /**
  * Created by bijesh on 5/21/2015.
@@ -104,11 +106,18 @@ public class DonateActivity extends ActionBarActivity {
                   if(validator.isFlag()){
                       ParseObject regObject = new ParseObject("Donor");
                       regObject.put("email",donor.getEmail());
+                      regObject.put("number",donor.getPhone());
                       regObject.put("name",donor.getName());
                       regObject.put("gender",donor.getGender());
                       regObject.put("above18","yes");
                       regObject.put("bloodGroup",donor.getBloodGroup());
-                      regObject.saveInBackground();
+                      regObject.saveInBackground(new SaveCallback() {
+                          @Override
+                          public void done(ParseException e) {
+                              Toast.makeText(DonateActivity.this,"God bless you!!!",Toast.LENGTH_LONG).show();
+                              finish();
+                          }
+                      });
                   }else{
                       Toast.makeText(DonateActivity.this,validator.getMessage(),Toast.LENGTH_LONG).show();
                   }

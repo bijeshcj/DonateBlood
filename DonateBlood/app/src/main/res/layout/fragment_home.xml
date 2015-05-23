@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="The blood you donate gives someone another chance at life. One day that someone may be a close relative, a friend, a loved one—or even you."
-        android:textColor="@android:color/white"
+        android:textColor="@color/accent"
         android:textSize="@dimen/textSizeOnScreens"
         />
 
