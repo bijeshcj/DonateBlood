@@ -14,10 +14,12 @@ import android.widget.Toast;
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.fragments.HomeFragment;
 import com.bijesh.donateblood.fragments.NavigationDrawerFragment;
+import com.parse.ParseException;
 import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
+import com.parse.SaveCallback;
 
 import org.json.JSONObject;
 
@@ -61,10 +63,26 @@ public class HomeActivity extends ActionBarActivity {
 
 //        showPushMessage();
 
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+//                ParsePush.subscribeInBackground("Donate");
+                ParsePush.subscribeInBackground("Donate", new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if (e == null) {
+                            Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
+                        } else {
+                            Log.e("com.parse.push", "failed to subscribe for push", e);
+                            e.printStackTrace();
+                        }
+                    }
+                });
+            }
+        }).start();
 
-        ParsePush.subscribeInBackground("Donate");
 
-        sendPush();
+//        sendPush();
 
 
 

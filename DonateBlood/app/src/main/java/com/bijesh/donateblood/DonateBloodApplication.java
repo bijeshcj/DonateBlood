@@ -26,10 +26,11 @@ public class DonateBloodApplication extends Application {
         Parse.enableLocalDatastore(this);
 
         Parse.initialize(this, "KJfdKjZnGbTBX1OzEcvIWIehgxsr2G46f0DLAGar", "o2zXEa0uO27sdSIwu9TXczWe2rEAfJ23wtuSBvVD");
-        ParseInstallation.getCurrentInstallation().saveInBackground();
+
 
 
         PushService.setDefaultPushCallback(this, HomeActivity.class);
+        ParseInstallation.getCurrentInstallation().saveInBackground();
 
     }
 
