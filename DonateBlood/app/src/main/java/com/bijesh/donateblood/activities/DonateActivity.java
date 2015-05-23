@@ -104,7 +104,7 @@ public class DonateActivity extends ActionBarActivity {
                 Donor donor = populateDonor();
                 Validator validator = ValidationUtils.validateDonateScreen(donor);
                   if(validator.isFlag()){
-                      ParseObject regObject = new ParseObject("Donor");
+                      final ParseObject regObject = new ParseObject("Donor");
                       regObject.put("email",donor.getEmail());
                       regObject.put("number",donor.getPhone());
                       regObject.put("name",donor.getName());
@@ -115,6 +115,7 @@ public class DonateActivity extends ActionBarActivity {
                           @Override
                           public void done(ParseException e) {
                               Toast.makeText(DonateActivity.this,"God bless you!!!",Toast.LENGTH_LONG).show();
+                              Log.d(TAG,"id is "+regObject.getObjectId());
                               finish();
                           }
                       });
