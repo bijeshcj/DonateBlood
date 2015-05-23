@@ -1,13 +1,17 @@
 package com.bijesh.donateblood.activities;
 
+
 import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.widget.FrameLayout;
 
 
 import com.bijesh.donateblood.R;
+import com.bijesh.donateblood.fragments.HomeFragment;
 import com.bijesh.donateblood.fragments.NavigationDrawerFragment;
 import com.parse.ParseObject;
 
@@ -20,6 +24,7 @@ public class HomeActivity extends ActionBarActivity {
     private static final String TAG = HomeActivity.class.getCanonicalName();
     private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
+    private FrameLayout mMainFrameLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +48,25 @@ public class HomeActivity extends ActionBarActivity {
 
 
 
+        mMainFrameLayout = (FrameLayout) findViewById(R.id.home_container);
+        init();
 
-        ParseObject testObject = new ParseObject("TestObject");
-        testObject.put("foo", "bar");
-        testObject.saveInBackground();
+//        ParseObject testObject = new ParseObject("TestObject");
+//        testObject.put("foo", "saibaba");
+//        testObject.saveInBackground();
 
+
+
+
+
+    }
+
+    private void init(){
+        HomeFragment fragment = new HomeFragment();
+
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.add(R.id.home_container,fragment);
+        fragmentTransaction.commit();
 
     }
 

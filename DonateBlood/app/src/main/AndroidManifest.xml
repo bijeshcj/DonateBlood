@@ -10,6 +10,9 @@
     <!-- below permission added to get the mobile number -->
     <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
 
+    <!-- below permission added to get the email -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
 
 
     <application
