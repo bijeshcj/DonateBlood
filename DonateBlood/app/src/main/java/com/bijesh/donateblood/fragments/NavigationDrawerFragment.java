@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 
 import com.bijesh.donateblood.R;
+import com.bijesh.donateblood.activities.ContactActivity;
 import com.bijesh.donateblood.activities.DonateActivity;
 import com.bijesh.donateblood.activities.NeedActivity;
 import com.bijesh.donateblood.activities.SponserActivity;
@@ -50,9 +51,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         View layout = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
         mRecyclerView = (RecyclerView) layout.findViewById(R.id.drawer_recycle_view);
         mNavigationDrawerAdapter = new NavigationDrawerAdapter(getActivity(), Arrays.asList(
-                new NavigationDrawerOptions("I donate"), new NavigationDrawerOptions("I need"),
-                new NavigationDrawerOptions("Our Proud Sponsers"),
-                new NavigationDrawerOptions("Share this app")));
+                new NavigationDrawerOptions("Register"), new NavigationDrawerOptions("Request to all donors"),
+                new NavigationDrawerOptions("Our Proud Sponsors"),
+                new NavigationDrawerOptions("Share this app"),
+                new NavigationDrawerOptions("Contact us")));
         mRecyclerView.setAdapter(mNavigationDrawerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mNavigationDrawerAdapter.setClickListener(this);
@@ -108,6 +110,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 break;
             case 3:
                 BaseUtils.shareApplication(getActivity());
+                break;
+            case 4:
+                startActivity(new Intent(getActivity(), ContactActivity.class));
                 break;
         }
     }
