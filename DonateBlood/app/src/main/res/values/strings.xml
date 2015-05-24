@@ -3,6 +3,7 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="banner_ad_unit_id">pub-9041872105010727</string>
 
 
     <string name="drawer_open">Open</string>
