@@ -18,9 +18,9 @@ public class ValidationUtils {
                 retFlag.setFlag(flagE);
                 return retFlag;
             }
-            flagE = donor.getPhone().trim().length() > 0;
+            flagE = validateBloodGroup(donor);
             if(!flagE){
-                retFlag.setMessage("Phone number is mandatory");
+                retFlag.setMessage("Phone number is mandatory for "+donor.getBloodGroup());
                 retFlag.setFlag(flagE);
                 return retFlag;
             }
@@ -32,6 +32,20 @@ public class ValidationUtils {
             }
         }
         return retFlag;
+    }
+
+    private static boolean validateBloodGroup(Donor donor){
+        if(donor.getPhone().trim().length() > 0)
+            return true;
+        else{
+            if(donor.getBloodGroup().equals("AB-") || donor.getBloodGroup().equals("B-") ||
+                    donor.getBloodGroup().equals("A-") || donor.getBloodGroup().equals("O-") ||
+                    donor.getBloodGroup().equals("AB+")){
+                return false;
+            }else{
+                return true;
+            }
+        }
     }
 
 }
