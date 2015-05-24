@@ -1,25 +1,226 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@mipmap/home_screen_bg"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@mipmap/home_screen_bg">
 
 
     <TextView
         android:id="@+id/txtViewQuote"
-        android:layout_marginTop="50dp"
-        android:paddingLeft="@dimen/screenPaddingLeft"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="@dimen/screenPaddingLeft"
         android:text="The blood you donate gives someone another chance at life. One day that someone may be a close relative, a friend, a loved one—or even you."
         android:textColor="@color/accent"
-        android:textSize="@dimen/textSizeOnScreens"
-        />
+        android:textSize="@dimen/textSizeOnScreens" />
+
+
+    <TableLayout
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtViewQuote"
+
+        >
+
+        <!-- Row 1 with single column -->
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:paddingTop="20dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="10"
+                android:background="#b0b0b0"
+                android:padding="18dip"
+                android:text="Blood types and population"
+                android:textColor="#000"
+                android:textSize="18dp" />
+
+        </TableRow>
+
+        <!-- Row 2 with 3 columns -->
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextView04"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView05"
+                android:layout_weight="1"
+                android:background="#d3d3d3"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView06"
+                android:layout_weight="1"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="A+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView07"
+                android:layout_weight="1"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="A-"
+                android:textColor="#000000" />
+
+
+            <TextView
+                android:id="@+id/TextView08"
+                android:layout_weight="1"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="B+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView09"
+                android:layout_weight="1"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="B-"
+                android:textColor="#000000" />
+
+
+            <TextView
+                android:id="@+id/TextView10"
+                android:layout_weight="1"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="AB+"
+                android:textColor="#000000" />
+
+
+            <TextView
+                android:id="@+id/TextView11"
+                android:layout_weight="1"
+                android:background="#cac9c9"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="AB-"
+                android:textColor="#000000" />
 
 
 
+        </TableRow>
 
 
+        <!-- Row 3 with 8 columns-->
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/TextView12"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView13"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView14"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView15"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView16"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView17"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+            <TextView
+                android:id="@+id/TextView18"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+            <TextView
+                android:id="@+id/TextView19"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/TextView20"
+                android:layout_weight="1"
+                android:background="#dcdcdc"
+                android:gravity="center"
+                android:padding="20dip"
+                android:text="O+"
+                android:textColor="#000000" />
+
+
+            </TableRow>
+
+
+    </TableLayout>
 
 
 </RelativeLayout>
