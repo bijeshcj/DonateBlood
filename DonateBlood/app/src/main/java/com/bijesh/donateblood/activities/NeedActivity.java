@@ -81,12 +81,13 @@ public class NeedActivity extends ActionBarActivity {
                 regObject.saveInBackground(new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
-                        Toast.makeText(NeedActivity.this, "Request sent to all donors, lets pray for the best!!!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(NeedActivity.this, "Request sent to all donors!!!", Toast.LENGTH_LONG).show();
                         Log.d(TAG, "id is " + regObject.getObjectId());
-                        finish();
+
                     }
                 });
 //                Toast.makeText(NeedActivity.this, "Request is sent", Toast.LENGTH_LONG).show();
+                finish();
             }
         });
 

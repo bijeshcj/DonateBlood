@@ -123,7 +123,7 @@
                     android:clickable="true"
                     android:layout_width="200dp"
                     android:layout_height="wrap_content"
-                    android:text="Lets pray together"
+                    android:text="Request All Donors"
                     android:id="@+id/btnRegister"
                     android:background="@color/accent"
                     />

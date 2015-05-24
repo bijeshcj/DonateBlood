@@ -23,9 +23,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
         android:paddingLeft="@dimen/screenPaddingLeft"
-        android:text="Push message here"
+        android:text=""
         android:textColor="@color/primary_dark"
-        android:textSize="@dimen/textSizeOnScreens" />
+        android:textSize="@dimen/textSizeOnScreens"
+
+        android:maxLines = "50"
+        android:scrollbars = "vertical"
+
+        />
 
 
 
