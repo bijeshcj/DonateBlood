@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.activities.DonateActivity;
 import com.bijesh.donateblood.activities.NeedActivity;
+import com.bijesh.donateblood.activities.SponserActivity;
 import com.bijesh.donateblood.adapters.NavigationDrawerAdapter;
 import com.bijesh.donateblood.models.ui.NavigationDrawerOptions;
 import com.bijesh.donateblood.utils.BaseUtils;
@@ -50,6 +51,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mRecyclerView = (RecyclerView) layout.findViewById(R.id.drawer_recycle_view);
         mNavigationDrawerAdapter = new NavigationDrawerAdapter(getActivity(), Arrays.asList(
                 new NavigationDrawerOptions("I donate"), new NavigationDrawerOptions("I need"),
+                new NavigationDrawerOptions("Our Proud Sponsers"),
                 new NavigationDrawerOptions("Share this app")));
         mRecyclerView.setAdapter(mNavigationDrawerAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -102,6 +104,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 startActivity(new Intent(getActivity(), NeedActivity.class));
                 break;
             case 2:
+                startActivity(new Intent(getActivity(), SponserActivity.class));
+                break;
+            case 3:
                 BaseUtils.shareApplication(getActivity());
                 break;
         }
