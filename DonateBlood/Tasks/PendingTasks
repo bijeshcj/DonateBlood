@@ -1,5 +1,21 @@
+Parse.com
 
-2) read email in register form and use that as the user name
-3) register a user and get the detail
-4) design I need screen
-5) Ads framework
+1) issue with push notification
+2) move push logic to cloud code for more info
+     https://www.parse.com/docs/android/guide#push-notifications
+
+
+
+
+
+UI changes
+==========
+1) learning option slider open first time
+2) push messages on home screen
+3) spinner blood group with border
+4) design Contact us
+
+
+
+Ads framework
+=============

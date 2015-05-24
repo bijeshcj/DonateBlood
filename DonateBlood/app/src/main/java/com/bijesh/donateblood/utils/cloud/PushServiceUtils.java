@@ -18,6 +18,7 @@ public class PushServiceUtils {
 
     public static void sendPush(RequestDonor requestDonor){
         ParsePush push = new ParsePush();
+
         push.setChannel("Donate");
         push.setMessage("Please help, need "+requestDonor.getBloodGroup()+" blood, contact person "+
                 requestDonor.getName()+" number "+requestDonor.getPhone());

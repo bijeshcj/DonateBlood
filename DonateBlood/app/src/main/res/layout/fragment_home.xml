@@ -16,7 +16,21 @@
         android:textSize="@dimen/textSizeOnScreens" />
 
 
-    <TableLayout
+    <TextView
+        android:id="@+id/txtViewPushRequests"
+        android:layout_below="@id/txtViewQuote"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:paddingLeft="@dimen/screenPaddingLeft"
+        android:text="Push message here"
+        android:textColor="@color/primary_dark"
+        android:textSize="@dimen/textSizeOnScreens" />
+
+
+
+
+    <!--<TableLayout
         android:visibility="gone"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -24,7 +38,7 @@
 
         >
 
-        <!-- Row 1 with single column -->
+        &lt;!&ndash; Row 1 with single column &ndash;&gt;
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -43,7 +57,7 @@
 
         </TableRow>
 
-        <!-- Row 2 with 3 columns -->
+        &lt;!&ndash; Row 2 with 3 columns &ndash;&gt;
 
         <TableRow
             android:id="@+id/tableRow1"
@@ -130,7 +144,7 @@
         </TableRow>
 
 
-        <!-- Row 3 with 8 columns-->
+        &lt;!&ndash; Row 3 with 8 columns&ndash;&gt;
 
         <TableRow
             android:id="@+id/tableRow2"
@@ -221,6 +235,6 @@
 
 
     </TableLayout>
-
+-->
 
 </RelativeLayout>

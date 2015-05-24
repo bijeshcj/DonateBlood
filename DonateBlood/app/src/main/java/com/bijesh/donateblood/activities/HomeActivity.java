@@ -19,6 +19,8 @@ import com.parse.ParseInstallation;
 import com.parse.ParseObject;
 import com.parse.ParsePush;
 import com.parse.ParseQuery;
+import com.parse.ParseUser;
+import com.parse.PushService;
 import com.parse.SaveCallback;
 
 import org.json.JSONObject;
@@ -35,6 +37,7 @@ public class HomeActivity extends ActionBarActivity {
     private Toolbar mToolBar;
     private DrawerLayout mDrawerLayout;
     private FrameLayout mMainFrameLayout;
+    private String pushMessage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +64,14 @@ public class HomeActivity extends ActionBarActivity {
         mMainFrameLayout = (FrameLayout) findViewById(R.id.home_container);
         init();
 
-//        showPushMessage();
+        showPushMessage();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
 //                ParsePush.subscribeInBackground("Donate");
+                Log.d(TAG,"$$$ before subscribing to Donate channel");
+
                 ParsePush.subscribeInBackground("Donate", new SaveCallback() {
                     @Override
                     public void done(ParseException e) {
@@ -113,8 +118,8 @@ public class HomeActivity extends ActionBarActivity {
             Bundle b = getIntent().getExtras();
             JSONObject jsonObject = new JSONObject(b.getString("com.parse.Data"));
             Toast.makeText(getApplicationContext(), "" + jsonObject.getString("alert"), Toast.LENGTH_LONG).show();
-            String data=jsonObject.getString("alert");
-            Log.d(TAG,"data "+data);
+            pushMessage = jsonObject.getString("alert");
+            Log.d(TAG,"pushMessage "+pushMessage);
         }catch(Exception e){
             e.printStackTrace();
         }
@@ -127,6 +132,10 @@ public class HomeActivity extends ActionBarActivity {
         fragmentTransaction.add(R.id.home_container,fragment);
         fragmentTransaction.commit();
 
+    }
+
+    public String getPushMessage(){
+        return pushMessage;
     }
 
     private void initGCM(){
