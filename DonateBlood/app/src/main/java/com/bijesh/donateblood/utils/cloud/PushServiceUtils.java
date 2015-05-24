@@ -1,5 +1,6 @@
 package com.bijesh.donateblood.utils.cloud;
 
+import com.bijesh.donateblood.models.ui.RequestDonor;
 import com.parse.ParsePush;
 
 /**
@@ -14,5 +15,15 @@ public class PushServiceUtils {
         push.setMessage("Need B+ blood, please help");
         push.sendInBackground();
     }
+
+    public static void sendPush(RequestDonor requestDonor){
+        ParsePush push = new ParsePush();
+        push.setChannel("Donate");
+        push.setMessage("Please help, need "+requestDonor.getBloodGroup()+" blood, contact person "+
+                requestDonor.getName()+" number "+requestDonor.getPhone());
+        push.sendInBackground();
+    }
+
+
 
 }

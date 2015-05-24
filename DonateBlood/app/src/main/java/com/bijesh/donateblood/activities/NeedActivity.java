@@ -5,11 +5,19 @@ import android.support.v7.app.ActionBarActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.bijesh.donateblood.R;
+import com.bijesh.donateblood.models.ui.RequestDonor;
 import com.bijesh.donateblood.utils.cloud.PushServiceUtils;
+import com.bijesh.donateblood.utils.phone.PhoneUtils;
+import com.parse.ParseException;
+import com.parse.ParseObject;
+import com.parse.SaveCallback;
 
 /**
  * Created by Bijesh on 23-05-2015.
@@ -20,6 +28,12 @@ public class NeedActivity extends ActionBarActivity {
 
     private Toolbar mToolBar;
     private Button mBtnRequest;
+    private EditText mEdtEmail;
+    private EditText mEdtPhone;
+    private EditText mEdtName;
+    private EditText mEdtDesc;
+    private Spinner mSpinBGroup;
+    private String mBloodGroup;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,11 +70,66 @@ public class NeedActivity extends ActionBarActivity {
         mBtnRequest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                PushServiceUtils.sendPush();
-                Toast.makeText(NeedActivity.this,"Request is sent",Toast.LENGTH_LONG).show();
+                RequestDonor requestDonor = populateRequestDonor();
+                PushServiceUtils.sendPush(requestDonor);
+                final ParseObject regObject = new ParseObject("RequestDonor");
+                regObject.put("email",requestDonor.getEmail());
+                regObject.put("phone",requestDonor.getPhone());
+                regObject.put("name",requestDonor.getName());
+                regObject.put("bloodGroup", requestDonor.getBloodGroup());
+                regObject.put("description", requestDonor.getDescription());
+                regObject.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        Toast.makeText(NeedActivity.this, "Request sent to all donors, lets pray for the best!!!", Toast.LENGTH_LONG).show();
+                        Log.d(TAG, "id is " + regObject.getObjectId());
+                        finish();
+                    }
+                });
+//                Toast.makeText(NeedActivity.this, "Request is sent", Toast.LENGTH_LONG).show();
             }
         });
 
+
+        mEdtEmail = (EditText) findViewById(R.id.edtTxtEmail);
+        mEdtPhone = (EditText) findViewById(R.id.edtTxtMobile);
+        mEdtName = (EditText) findViewById(R.id.edtTxtName);
+        mEdtDesc = (EditText) findViewById(R.id.edtTxtDesc);
+
+
+        String email = PhoneUtils.getPrimaryEmailAddress(this);
+        if(email != null)
+            mEdtEmail.setText(email);
+
+
+        mSpinBGroup = (Spinner)findViewById(R.id.spinnerBloodGroup);
+        mSpinBGroup.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                mBloodGroup = parent.getItemAtPosition(position).toString();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
+
+
+
+    }
+
+    private RequestDonor populateRequestDonor(){
+        RequestDonor requestDonor = null;
+        String email = mEdtEmail.getText().toString();
+        String phone = mEdtPhone.getText().toString();
+        String name = mEdtName.getText().toString();
+        String desc = mEdtDesc.getText().toString();
+
+        requestDonor = new RequestDonor(email,phone,name,mBloodGroup,desc);
+
+        return requestDonor;
     }
 
 }

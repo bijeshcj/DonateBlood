@@ -11,6 +11,7 @@
         layout="@layout/app_bar" />
 
     <com.google.android.gms.ads.AdView
+        android:visibility="gone"
         android:layout_below="@id/app_toolbar"
         android:id="@+id/ad_view"
         android:layout_width="match_parent"
