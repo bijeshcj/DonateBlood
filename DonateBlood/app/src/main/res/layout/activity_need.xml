@@ -92,7 +92,7 @@
 
                     android:id="@+id/spinnerBloodGroup"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="80dp"
                     android:entries="@array/blood_group_arrays"
                     android:prompt="@string/group_prompt" />
 
