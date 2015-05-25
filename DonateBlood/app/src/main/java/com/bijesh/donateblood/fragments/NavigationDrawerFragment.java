@@ -17,12 +17,13 @@ import android.widget.Toast;
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.activities.ContactActivity;
-import com.bijesh.donateblood.activities.DonateActivity;
+import com.bijesh.donateblood.activities.RegisterActivity;
 import com.bijesh.donateblood.activities.NeedActivity;
 import com.bijesh.donateblood.activities.SponserActivity;
 import com.bijesh.donateblood.adapters.NavigationDrawerAdapter;
 import com.bijesh.donateblood.models.ui.NavigationDrawerOptions;
 import com.bijesh.donateblood.utils.BaseUtils;
+import com.bijesh.donateblood.utils.ValidationUtils;
 
 import java.util.Arrays;
 
@@ -100,10 +101,14 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 //        Toast.makeText(getActivity(),"Clicked on position "+position,Toast.LENGTH_LONG).show();
         switch (position){
             case 0:
-                startActivity(new Intent(getActivity(), DonateActivity.class));
+                startActivity(new Intent(getActivity(), RegisterActivity.class));
                 break;
             case 1:
-                startActivity(new Intent(getActivity(), NeedActivity.class));
+                if(ValidationUtils.isUserAlreadyRegistered(getActivity())) {
+                    startActivity(new Intent(getActivity(), NeedActivity.class));
+                }else{
+                    Toast.makeText(getActivity(),"Please Register",Toast.LENGTH_LONG).show();
+                }
                 break;
             case 2:
                 startActivity(new Intent(getActivity(), SponserActivity.class));

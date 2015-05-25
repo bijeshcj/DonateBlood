@@ -15,10 +15,11 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 
+import com.bijesh.donateblood.DonateBloodApplication;
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.models.ui.Donor;
 import com.bijesh.donateblood.models.ui.Validator;
-import com.bijesh.donateblood.utils.ModelPopulateUtil;
+import com.bijesh.donateblood.storage.DonateSharedPrefs;
 import com.bijesh.donateblood.utils.ValidationUtils;
 import com.bijesh.donateblood.utils.phone.PhoneUtils;
 import com.parse.ParseException;
@@ -28,9 +29,9 @@ import com.parse.SaveCallback;
 /**
  * Created by bijesh on 5/21/2015.
  */
-public class DonateActivity extends ActionBarActivity {
+public class RegisterActivity extends ActionBarActivity {
 
-    private static final String TAG = DonateActivity.class.getCanonicalName();
+    private static final String TAG = RegisterActivity.class.getCanonicalName();
     private Toolbar mToolBar;
     private EditText edtTxtMobile,edtTxtEmail,edtTxtName;
     private Spinner mSpinBGroup;
@@ -114,14 +115,15 @@ public class DonateActivity extends ActionBarActivity {
                       regObject.saveInBackground(new SaveCallback() {
                           @Override
                           public void done(ParseException e) {
-                              Toast.makeText(DonateActivity.this,"God bless you!!!",Toast.LENGTH_LONG).show();
-                              Log.d(TAG,"id is "+regObject.getObjectId());
-                              finish();
+                              Toast.makeText(RegisterActivity.this,"God bless you!!!",Toast.LENGTH_LONG).show();
+                              Log.d(TAG, "id is " + regObject.getObjectId());
+                              DonateSharedPrefs.getInstance(DonateBloodApplication.getInstance()).setStringData(DonateSharedPrefs.IS_REGISTERED_KEY,regObject.getObjectId());
                           }
                       });
                   }else{
-                      Toast.makeText(DonateActivity.this,validator.getMessage(),Toast.LENGTH_LONG).show();
+                      Toast.makeText(RegisterActivity.this,validator.getMessage(),Toast.LENGTH_LONG).show();
                   }
+                finish();
             }
         });
 

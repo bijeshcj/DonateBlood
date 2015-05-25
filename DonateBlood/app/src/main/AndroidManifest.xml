@@ -59,7 +59,7 @@
         </activity>
         <activity android:name=".activities.SplashActivity" android:screenOrientation="portrait" />
         <activity android:name=".activities.LoginActivity"  android:screenOrientation="portrait" />
-        <activity android:name=".activities.DonateActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activities.RegisterActivity" android:screenOrientation="portrait" />
         <activity android:name=".activities.NeedActivity" android:screenOrientation="portrait" />
         <activity android:name=".activities.SponserActivity" android:screenOrientation="portrait" />
         <activity android:name=".activities.ContactActivity" android:screenOrientation="portrait" />

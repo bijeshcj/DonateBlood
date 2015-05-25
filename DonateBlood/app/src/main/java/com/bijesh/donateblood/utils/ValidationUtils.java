@@ -1,13 +1,24 @@
 package com.bijesh.donateblood.utils;
 
+import android.content.Context;
+
 import com.bijesh.donateblood.models.ui.Donor;
 import com.bijesh.donateblood.models.ui.Validator;
+import com.bijesh.donateblood.storage.DonateSharedPrefs;
 
 /**
  * Created by Bijesh on 23-05-2015.
  */
 public class ValidationUtils {
 
+
+    public static boolean isUserAlreadyRegistered(Context context){
+        String objectId = DonateSharedPrefs.getInstance(context).getStringData(DonateSharedPrefs.IS_REGISTERED_KEY,"");
+        if(objectId != null && objectId.trim().length() > 0){
+            return true;
+        }else
+            return false;
+    }
 
     public static Validator validateDonateScreen(Donor donor){
         Validator retFlag = new Validator();
@@ -47,5 +58,7 @@ public class ValidationUtils {
             }
         }
     }
+
+
 
 }
