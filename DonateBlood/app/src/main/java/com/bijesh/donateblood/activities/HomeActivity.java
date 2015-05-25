@@ -66,25 +66,25 @@ public class HomeActivity extends ActionBarActivity {
 
         showPushMessage();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-//                ParsePush.subscribeInBackground("Donate");
-                Log.d(TAG,"$$$ before subscribing to Donate channel");
-
-                ParsePush.subscribeInBackground("Donate", new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        if (e == null) {
-                            Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
-                        } else {
-                            Log.e("com.parse.push", "failed to subscribe for push", e);
-                            e.printStackTrace();
-                        }
-                    }
-                });
-            }
-        }).start();
+//        new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+////                ParsePush.subscribeInBackground("Donate");
+//                Log.d(TAG,"$$$ before subscribing to Donate channel");
+//
+//                ParsePush.subscribeInBackground("Donate", new SaveCallback() {
+//                    @Override
+//                    public void done(ParseException e) {
+//                        if (e == null) {
+//                            Log.d("com.parse.push", "successfully subscribed to the broadcast channel.");
+//                        } else {
+//                            Log.e("com.parse.push", "failed to subscribe for push", e);
+//                            e.printStackTrace();
+//                        }
+//                    }
+//                });
+//            }
+//        }).start();
 
 
 //        sendPush();
