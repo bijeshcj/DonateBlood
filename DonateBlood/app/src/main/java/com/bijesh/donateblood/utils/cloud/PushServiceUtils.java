@@ -21,7 +21,7 @@ public class PushServiceUtils {
 
         push.setChannel("Donate");
         push.setMessage("Please help, need "+requestDonor.getBloodGroup()+" blood, contact person "+
-                requestDonor.getName()+" number "+requestDonor.getPhone());
+                requestDonor.getName()+" number "+requestDonor.getPhone()+" city "+requestDonor.getCity()+" country "+requestDonor.getCountry());
         push.sendInBackground();
     }
 

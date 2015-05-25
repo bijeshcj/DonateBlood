@@ -46,12 +46,22 @@
             android:textSize="@dimen/textSizeOnScreens" />
 
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/edtTxtEmail"
+            android:id="@+id/txtVwPhoneSuffix"
+            android:paddingLeft="@dimen/screenPaddingLeft"
+            android:text="Please enter country code (eg) 91 your number"
+            android:textColor="@color/screen_text_color"
+            android:textSize="@dimen/textSizeOnScreens"
+            />
 
         <EditText
             android:id="@+id/edtTxtMobile"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/edtTxtEmail"
+            android:layout_below="@id/txtVwPhoneSuffix"
             android:layout_marginTop="20dp"
             android:hint="phone must for AB+,AB-,A-,B-,O-"
             android:inputType="number"

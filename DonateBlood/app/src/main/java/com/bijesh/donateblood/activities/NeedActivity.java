@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.models.ui.RequestDonor;
+import com.bijesh.donateblood.models.ui.Validator;
+import com.bijesh.donateblood.utils.ValidationUtils;
 import com.bijesh.donateblood.utils.cloud.PushServiceUtils;
 import com.bijesh.donateblood.utils.phone.PhoneUtils;
 import com.parse.ParseException;
@@ -31,7 +33,7 @@ public class NeedActivity extends ActionBarActivity {
     private EditText mEdtEmail;
     private EditText mEdtPhone;
     private EditText mEdtName;
-    private EditText mEdtDesc;
+    private EditText mEdtDesc, mEdtCity, mEdtCountry;
     private Spinner mSpinBGroup;
     private String mBloodGroup;
 
@@ -71,21 +73,29 @@ public class NeedActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
                 RequestDonor requestDonor = populateRequestDonor();
-                PushServiceUtils.sendPush(requestDonor);
-                final ParseObject regObject = new ParseObject("RequestDonor");
-                regObject.put("email",requestDonor.getEmail());
-                regObject.put("phone",requestDonor.getPhone());
-                regObject.put("name",requestDonor.getName());
-                regObject.put("bloodGroup", requestDonor.getBloodGroup());
-                regObject.put("description", requestDonor.getDescription());
-                regObject.saveInBackground(new SaveCallback() {
-                    @Override
-                    public void done(ParseException e) {
-                        Toast.makeText(NeedActivity.this, "Request sent to all donors!!!", Toast.LENGTH_LONG).show();
-                        Log.d(TAG, "id is " + regObject.getObjectId());
+                Validator validator = ValidationUtils.validateRequestDonorScreen(requestDonor);
+                if(validator.isFlag()) {
+                    PushServiceUtils.sendPush(requestDonor);
+                    final ParseObject regObject = new ParseObject("RequestDonor");
+                    regObject.put("email", requestDonor.getEmail());
+                    regObject.put("phone", requestDonor.getPhone());
+                    regObject.put("name", requestDonor.getName());
+                    regObject.put("bloodGroup", requestDonor.getBloodGroup());
+                    regObject.put("description", requestDonor.getDescription());
+                    regObject.put("city", requestDonor.getCity());
+                    regObject.put("country", requestDonor.getCountry());
+                    regObject.saveInBackground(new SaveCallback() {
+                        @Override
+                        public void done(ParseException e) {
+                            Toast.makeText(NeedActivity.this, "Request sent to all donors!!!", Toast.LENGTH_LONG).show();
+                            Log.d(TAG, "id is " + regObject.getObjectId());
 
-                    }
-                });
+                        }
+                    });
+                }else{
+                    Toast.makeText(NeedActivity.this,validator.getMessage(),Toast.LENGTH_LONG).show();
+                    return;
+                }
 //                Toast.makeText(NeedActivity.this, "Request is sent", Toast.LENGTH_LONG).show();
                 finish();
             }
@@ -96,6 +106,8 @@ public class NeedActivity extends ActionBarActivity {
         mEdtPhone = (EditText) findViewById(R.id.edtTxtMobile);
         mEdtName = (EditText) findViewById(R.id.edtTxtName);
         mEdtDesc = (EditText) findViewById(R.id.edtTxtDesc);
+        mEdtCity = (EditText) findViewById(R.id.edtTxtCity);
+        mEdtCountry = (EditText) findViewById(R.id.edtTxtCountry);
 
 
         String email = PhoneUtils.getPrimaryEmailAddress(this);
@@ -126,9 +138,12 @@ public class NeedActivity extends ActionBarActivity {
         String email = mEdtEmail.getText().toString();
         String phone = mEdtPhone.getText().toString();
         String name = mEdtName.getText().toString();
+        String city = mEdtCity.getText().toString();
+        String country = mEdtCountry.getText().toString();
         String desc = mEdtDesc.getText().toString();
 
-        requestDonor = new RequestDonor(email,phone,name,mBloodGroup,desc);
+        Log.d(TAG,"Request Donor email "+email+" phone "+phone+" bg "+mBloodGroup+" city "+city+" country "+country);
+        requestDonor = new RequestDonor(email,phone,name,mBloodGroup,desc,city,country);
 
         return requestDonor;
     }

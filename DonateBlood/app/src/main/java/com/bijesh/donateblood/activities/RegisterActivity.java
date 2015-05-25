@@ -103,7 +103,7 @@ public class RegisterActivity extends ActionBarActivity {
             public void onClick(View v) {
 
                 Donor donor = populateDonor();
-                Validator validator = ValidationUtils.validateDonateScreen(donor);
+                Validator validator = ValidationUtils.validateRegisterScreen(donor);
                   if(validator.isFlag()){
                       final ParseObject regObject = new ParseObject("Donor");
                       regObject.put("email",donor.getEmail());
@@ -122,6 +122,7 @@ public class RegisterActivity extends ActionBarActivity {
                       });
                   }else{
                       Toast.makeText(RegisterActivity.this,validator.getMessage(),Toast.LENGTH_LONG).show();
+                      return;
                   }
                 finish();
             }

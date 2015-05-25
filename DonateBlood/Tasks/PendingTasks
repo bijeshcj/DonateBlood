@@ -11,10 +11,14 @@ Parse.com
 UI changes
 ==========
 1) learning option slider open first time
-2) push messages on home screen
-3) spinner blood group with border
-4) design Contact us
+2) spinner blood group with border
 
+
+
+Validations
+===========
+
+1) only once in a day send request
 
 
 Ads framework

@@ -101,7 +101,11 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 //        Toast.makeText(getActivity(),"Clicked on position "+position,Toast.LENGTH_LONG).show();
         switch (position){
             case 0:
-                startActivity(new Intent(getActivity(), RegisterActivity.class));
+                if(ValidationUtils.isUserAlreadyRegistered(getActivity())) {
+                    Toast.makeText(getActivity(),"Already Registered",Toast.LENGTH_LONG).show();
+                }else{
+                    startActivity(new Intent(getActivity(), RegisterActivity.class));
+                }
                 break;
             case 1:
                 if(ValidationUtils.isUserAlreadyRegistered(getActivity())) {

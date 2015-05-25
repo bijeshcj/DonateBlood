@@ -11,6 +11,24 @@ public class RequestDonor {
     private String name;
     private String bloodGroup;
     private String description;
+    private String city;
+    private String country;
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
 
     public String getDescription() {
         return description;
@@ -20,13 +38,14 @@ public class RequestDonor {
         this.description = description;
     }
 
-    public RequestDonor(String email,String phone,String name,String bloodGroup,String description){
+    public RequestDonor(String email,String phone,String name,String bloodGroup,String description,String city,String country){
         this.email = email;
         this.phone = phone;
         this.name = name;
         this.bloodGroup = bloodGroup;
         this.description = description;
-
+        this.city = city;
+        this.country = country;
     }
 
     public String getEmail() {
