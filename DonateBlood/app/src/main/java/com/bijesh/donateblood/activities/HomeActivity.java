@@ -57,7 +57,7 @@ public class HomeActivity extends ActionBarActivity {
 
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
 
-        navigationDrawerFragment.setUp(mDrawerLayout, mToolBar);
+        navigationDrawerFragment.setUp(R.id.fragment_nav_drawer,mDrawerLayout, mToolBar);
 
 
 

@@ -14,6 +14,7 @@ public class DonateSharedPrefs {
 
 //     All keys goes here
     public static final String IS_REGISTERED_KEY = "isRegistered";
+    public static final String IS_NAVIGATION_DRAWER_LEARNED = "isNavigationDrawerLearned";
 
     private static DonateSharedPrefs mInstance;
     private SharedPreferences mSharedPreferences;

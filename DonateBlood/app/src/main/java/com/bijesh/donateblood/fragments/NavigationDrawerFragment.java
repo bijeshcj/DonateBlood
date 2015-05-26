@@ -22,6 +22,7 @@ import com.bijesh.donateblood.activities.NeedActivity;
 import com.bijesh.donateblood.activities.SponserActivity;
 import com.bijesh.donateblood.adapters.NavigationDrawerAdapter;
 import com.bijesh.donateblood.models.ui.NavigationDrawerOptions;
+import com.bijesh.donateblood.storage.DonateSharedPrefs;
 import com.bijesh.donateblood.utils.BaseUtils;
 import com.bijesh.donateblood.utils.ValidationUtils;
 
@@ -38,12 +39,22 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
     private NavigationDrawerAdapter mNavigationDrawerAdapter;
-
+    private boolean mUserLearnedDrawer;
+    private boolean mFromSavedInstanceState;
+    private View mNavigationContainerView;
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mUserLearnedDrawer = Boolean.valueOf(DonateSharedPrefs.getInstance(getActivity()).getStringData(DonateSharedPrefs.IS_NAVIGATION_DRAWER_LEARNED,"false"));
+        if(savedInstanceState != null){
+            mFromSavedInstanceState = true;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,12 +75,17 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     }
 
 
-    public void setUp(DrawerLayout drawerLayout, final Toolbar toolbar) {
-            this.mDrawerLayout = drawerLayout;
+    public void setUp(int fragmentId,DrawerLayout drawerLayout, final Toolbar toolbar) {
+        this.mNavigationContainerView = getActivity().findViewById(fragmentId);
+        this.mDrawerLayout = drawerLayout;
         mActionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(),drawerLayout,toolbar,R.string.drawer_open,R.string.drawer_close){
             @Override
             public void onDrawerOpened(View drawerView) {
                 super.onDrawerOpened(drawerView);
+                if(!mUserLearnedDrawer){
+                    mUserLearnedDrawer = true;
+                    DonateSharedPrefs.getInstance(getActivity()).setStringData(DonateSharedPrefs.IS_NAVIGATION_DRAWER_LEARNED,"true");
+                }
                 getActivity().invalidateOptionsMenu();
             }
 
@@ -85,6 +101,10 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 //                   toolbar.setAlpha(1-slideOffset);
             }
         };
+
+        if(!mUserLearnedDrawer && !mFromSavedInstanceState){
+            mDrawerLayout.openDrawer(mNavigationContainerView);
+        }
 
         mDrawerLayout.setDrawerListener(mActionBarDrawerToggle);
         mDrawerLayout.post(new Runnable() {
@@ -125,4 +145,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 break;
         }
     }
+
+
+
 }

@@ -18,6 +18,18 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:paddingLeft="@dimen/screenPaddingLeft"
+        android:text="For any technical issues or in case of contact details for any particular rare blood group donor, please feel free to mail. We are more than happy to help you."
+        android:textColor="@color/screen_text_color"
+        android:textSize="@dimen/textSizeOnScreens" />
+
+
+    <TextView
+        android:id="@+id/regEmail"
+        android:layout_below="@id/regHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="@dimen/screenPaddingLeft"
         android:text="bijesh.jay@gmail.com"
         android:textColor="@color/screen_text_color"
         android:textSize="@dimen/textSizeOnScreens" />

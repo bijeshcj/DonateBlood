@@ -115,7 +115,7 @@ public class RegisterActivity extends ActionBarActivity {
                       regObject.saveInBackground(new SaveCallback() {
                           @Override
                           public void done(ParseException e) {
-                              Toast.makeText(RegisterActivity.this,"God bless you!!!",Toast.LENGTH_LONG).show();
+                              Toast.makeText(RegisterActivity.this,"You have registered successfully",Toast.LENGTH_LONG).show();
                               Log.d(TAG, "id is " + regObject.getObjectId());
                               DonateSharedPrefs.getInstance(DonateBloodApplication.getInstance()).setStringData(DonateSharedPrefs.IS_REGISTERED_KEY,regObject.getObjectId());
                           }
