@@ -10,11 +10,11 @@ public class BaseUtils {
 
 
     public static void shareApplication(Context context){
-        String url = "https://play.google.com/store/apps/details?id=com.calldropdetect&hl=en";
+        String url = "https://play.google.com/store/apps/details?id=com.bijesh.donateblood";
 
         Intent sharingIntent = new Intent(Intent.ACTION_SEND);
         sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "SignalRx");
+        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, "Donate Blood");
         sharingIntent.putExtra(Intent.EXTRA_TEXT,url);
         context.startActivity(Intent.createChooser(sharingIntent,"Share Via"));
     }
