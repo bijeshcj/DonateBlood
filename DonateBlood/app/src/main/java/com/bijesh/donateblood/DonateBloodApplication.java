@@ -22,6 +22,7 @@ public class DonateBloodApplication extends Application {
 
     private static DonateBloodApplication mInstance;
     private static final String TAG = DonateBloodApplication.class.getCanonicalName();
+    private Handler handler;
 
     @Override
     public void onCreate() {
@@ -43,12 +44,24 @@ public class DonateBloodApplication extends Application {
         PushService.setDefaultPushCallback(this, HomeActivity.class);
         ParseInstallation.getCurrentInstallation().getInstallationId();
 
+
+        handler = new Handler();
 //        ParseInstallation.getCurrentInstallation().saveEventually();
-        final String  androidId = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
+
+
+
+       registerPushService();
+
+
+    }
+
+    private void registerPushService() {
+
+        final String androidId = Settings.Secure.getString(getApplicationContext().getContentResolver(), Settings.Secure.ANDROID_ID);
 
 
         // Post the uniqueId delayed
-        Handler handler = new Handler();
+
         handler.postDelayed(new Runnable() {
                                 @Override
                                 public void run() {
@@ -57,13 +70,12 @@ public class DonateBloodApplication extends Application {
                                         @Override
                                         public void done(ParseException e) {
                                             // Saved!
-                                            Log.d(TAG,"Parse Installation id saved on cloud");
+                                            Log.d(TAG, "Parse Installation id saved on cloud");
                                         }
                                     });
                                 }
                             }, 10000
         );
-
 
 
         handler.postDelayed(new Runnable() {
@@ -77,18 +89,15 @@ public class DonateBloodApplication extends Application {
                         } else {
                             Log.e("com.parse.push", "failed to subscribe for push", e);
                             e.printStackTrace();
+                            registerPushService();
                         }
                     }
                 });
             }
         }, 20000);
-
-
-
-
     }
 
-    public synchronized static DonateBloodApplication getInstance(){
+    public synchronized static DonateBloodApplication getInstance() {
         return mInstance;
     }
 
