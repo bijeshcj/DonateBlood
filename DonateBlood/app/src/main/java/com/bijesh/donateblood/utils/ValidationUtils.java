@@ -13,6 +13,11 @@ import com.bijesh.donateblood.storage.DonateSharedPrefs;
 public class ValidationUtils {
 
 
+    private static final int ONE_MILLISECOND = 1000;
+    private static final int ONE_MINUTE = 60;
+    private static final long PUSH_REQUEST_TIME_INTERVAL = ONE_MILLISECOND * ONE_MINUTE * 3;
+
+
     public static boolean isUserAlreadyRegistered(Context context){
         String objectId = DonateSharedPrefs.getInstance(context).getStringData(DonateSharedPrefs.IS_REGISTERED_KEY,"");
         if(objectId != null && objectId.trim().length() > 0){
@@ -20,6 +25,15 @@ public class ValidationUtils {
         }else
             return false;
     }
+
+    public static boolean hasAlreadySentRequest(long currentTime,long previousRequestTime){
+        if(currentTime < previousRequestTime + PUSH_REQUEST_TIME_INTERVAL){
+            return false;
+        }else {
+            return true;
+        }
+    }
+
 
     public static Validator validateRequestDonorScreen(RequestDonor requestDonor){
         Validator retFlag = new Validator();

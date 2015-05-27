@@ -129,7 +129,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
                 break;
             case 1:
                 if(ValidationUtils.isUserAlreadyRegistered(getActivity())) {
-                    startActivity(new Intent(getActivity(), NeedActivity.class));
+                    long currentTime = System.currentTimeMillis();
+                    long previousRequestTime = DonateSharedPrefs.getInstance(getActivity()).getLongData(DonateSharedPrefs.HAS_ALREADY_NOTIFIED_DONORS_RECENTLY, 0);
+                    if(ValidationUtils.hasAlreadySentRequest(currentTime,previousRequestTime)) {
+                        startActivity(new Intent(getActivity(), NeedActivity.class));
+                    }else{
+                        Toast.makeText(getActivity(),"You have already sent request",Toast.LENGTH_LONG).show();
+                    }
                 }else{
                     Toast.makeText(getActivity(),"Please Register",Toast.LENGTH_LONG).show();
                 }

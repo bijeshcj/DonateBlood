@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.bijesh.donateblood.R;
 import com.bijesh.donateblood.models.ui.RequestDonor;
 import com.bijesh.donateblood.models.ui.Validator;
+import com.bijesh.donateblood.storage.DonateSharedPrefs;
 import com.bijesh.donateblood.utils.ValidationUtils;
 import com.bijesh.donateblood.utils.cloud.PushServiceUtils;
 import com.bijesh.donateblood.utils.phone.PhoneUtils;
@@ -89,6 +90,8 @@ public class NeedActivity extends ActionBarActivity {
                         public void done(ParseException e) {
                             Toast.makeText(NeedActivity.this, "Request sent to all donors!!!", Toast.LENGTH_LONG).show();
                             Log.d(TAG, "id is " + regObject.getObjectId());
+                            DonateSharedPrefs.getInstance(NeedActivity.this).setLongData(DonateSharedPrefs.HAS_ALREADY_NOTIFIED_DONORS_RECENTLY,
+                                    System.currentTimeMillis());
 
                         }
                     });

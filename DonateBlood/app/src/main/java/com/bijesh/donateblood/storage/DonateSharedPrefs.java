@@ -15,6 +15,7 @@ public class DonateSharedPrefs {
 //     All keys goes here
     public static final String IS_REGISTERED_KEY = "isRegistered";
     public static final String IS_NAVIGATION_DRAWER_LEARNED = "isNavigationDrawerLearned";
+    public static final String HAS_ALREADY_NOTIFIED_DONORS_RECENTLY = "hasAlreadyNotifiedDonorsRecently";
 
     private static DonateSharedPrefs mInstance;
     private SharedPreferences mSharedPreferences;
@@ -39,6 +40,15 @@ public class DonateSharedPrefs {
 
     public String getStringData(String key, String defaultValue) {
         return mSharedPreferences.getString(key, defaultValue);
+    }
+
+    public void setLongData(String key,long value){
+        mEditor.putLong(HAS_ALREADY_NOTIFIED_DONORS_RECENTLY,value);
+        mEditor.commit();
+    }
+
+    public long getLongData(String key,long defValue){
+        return mSharedPreferences.getLong(key,defValue);
     }
 
 }
