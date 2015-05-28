@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/donat_screen_bg"
+    
     >
 
 
@@ -19,7 +19,7 @@
         android:layout_marginTop="10dp"
         android:paddingLeft="@dimen/screenPaddingLeft"
         android:text="For any technical issues or in case of contact details for any particular rare blood group donor, please feel free to mail. We are more than happy to help you."
-        android:textColor="@color/screen_text_color"
+        android:textColor="@android:color/black"
         android:textSize="@dimen/textSizeOnScreens" />
 
 

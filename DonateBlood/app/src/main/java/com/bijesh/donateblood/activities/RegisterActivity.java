@@ -69,15 +69,7 @@ public class RegisterActivity extends ActionBarActivity {
         edtTxtMobile = (EditText)findViewById(R.id.edtTxtMobile);
         edtTxtName = (EditText)findViewById(R.id.edtTxtName);
 
-        String number = PhoneUtils.getPrimaryMobileNumber(this);
 
-        String email = PhoneUtils.getPrimaryEmailAddress(this);
-
-        if(email != null)
-            edtTxtEmail.setText(email);
-
-        if(number != null)
-            edtTxtMobile.setText(number);
 
         mRadioGroupGender = (RadioGroup) findViewById(R.id.genderRadioGroup);
 

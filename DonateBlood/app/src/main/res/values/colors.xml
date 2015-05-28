@@ -13,12 +13,18 @@
 
 
 
+
+
     <color name="screen_text_color">#D32F2F</color>
     <color name="edit_text_color">#212121</color>
 
 
 
     <color name="nav_drawer_menu_background">#0D3638</color>
+
+
+    <!-- Sponsors colors -->
+    <color name="navy_blue">#000063</color>
 
 
 </resources>

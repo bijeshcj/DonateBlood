@@ -64,7 +64,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mRecyclerView = (RecyclerView) layout.findViewById(R.id.drawer_recycle_view);
         mNavigationDrawerAdapter = new NavigationDrawerAdapter(getActivity(), Arrays.asList(
                 new NavigationDrawerOptions("Register"), new NavigationDrawerOptions("Request to all donors"),
-                new NavigationDrawerOptions("Our Proud Sponsors"),
+                new NavigationDrawerOptions("Our Sponsors"),
                 new NavigationDrawerOptions("Share this app"),
                 new NavigationDrawerOptions("Contact us")));
         mRecyclerView.setAdapter(mNavigationDrawerAdapter);

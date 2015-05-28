@@ -16,31 +16,31 @@ public class PhoneUtils {
 
     private static final String TAG = PhoneUtils.class.getCanonicalName();
 
-    public static String getPrimaryMobileNumber(Context context) {
-        String retNumber;
-        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
-        retNumber = telephonyManager.getLine1Number();
-        Log.d(TAG,"Primary number "+retNumber);
-        if (retNumber == null)
-            return "";
-        else
-            return retNumber;
-    }
-
-    public static String getPrimaryEmailAddress(Context context){
-        String retEmail = null;
-        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
-        Account[] accounts = AccountManager.get(context).getAccounts();
-        for (Account account : accounts) {
-            if (emailPattern.matcher(account.name).matches()) {
-                retEmail = account.name;
-                Log.d(TAG,"email "+retEmail);
-                if(retEmail != null)
-                    break;
-            }
-        }
-        return retEmail;
-    }
+//    public static String getPrimaryMobileNumber(Context context) {
+//        String retNumber = null;
+////        TelephonyManager telephonyManager = (TelephonyManager) context.getSystemService(Context.TELEPHONY_SERVICE);
+////        retNumber = telephonyManager.getLine1Number();
+////        Log.d(TAG,"Primary number "+retNumber);
+//        if (retNumber == null)
+//            return "";
+//        else
+//            return retNumber;
+//    }
+//
+//    public static String getPrimaryEmailAddress(Context context){
+//        String retEmail = null;
+//        Pattern emailPattern = Patterns.EMAIL_ADDRESS; // API level 8+
+//        Account[] accounts = AccountManager.get(context).getAccounts();
+//        for (Account account : accounts) {
+//            if (emailPattern.matcher(account.name).matches()) {
+//                retEmail = account.name;
+//                Log.d(TAG,"email "+retEmail);
+//                if(retEmail != null)
+//                    break;
+//            }
+//        }
+//        return retEmail;
+//    }
 
 
 

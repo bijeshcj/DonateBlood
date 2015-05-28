@@ -3,7 +3,7 @@
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@mipmap/donat_screen_bg"
+
     >
 
     <include
@@ -50,12 +50,48 @@
 
     </LinearLayout>
 
+    <RelativeLayout
+        android:id="@+id/elixir"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_below="@id/blueCross"
+        android:background="@color/navy_blue"
+        android:layout_marginBottom="10dp"
+        >
+
+        <TextView
+            android:id="@+id/elixrHeader"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="45sp"
+            android:text="Elixir Medical Claims Management, LLC"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSizeOnScreens"
+            />
+
+        <TextView
+            android:id="@+id/elixrAddress"
+            android:layout_below="@id/elixrHeader"
+            android:gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Abu Dhabi, UAE"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/textSizeOnScreens"
+            android:layout_marginLeft="30dp"
+            />
+
+
+
+    </RelativeLayout>
+
 
     <LinearLayout
         android:id="@+id/yourAds"
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_below="@id/blueCross"
+        android:layout_below="@id/elixir"
         android:orientation="horizontal"
         android:gravity="center"
         android:background="@android:color/white"
@@ -65,7 +101,7 @@
             android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="You can be our sponser too."
+            android:text="You can be our sponser too"
             android:textColor="@color/primary_dark"
             android:textSize="@dimen/textSizeOnScreens"
             />

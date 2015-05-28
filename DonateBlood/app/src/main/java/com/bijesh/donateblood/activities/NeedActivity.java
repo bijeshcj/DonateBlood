@@ -113,9 +113,6 @@ public class NeedActivity extends ActionBarActivity {
         mEdtCountry = (EditText) findViewById(R.id.edtTxtCountry);
 
 
-        String email = PhoneUtils.getPrimaryEmailAddress(this);
-        if(email != null)
-            mEdtEmail.setText(email);
 
 
         mSpinBGroup = (Spinner)findViewById(R.id.spinnerBloodGroup);

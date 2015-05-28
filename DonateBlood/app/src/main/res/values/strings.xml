@@ -20,6 +20,12 @@
     <string-array name="blood_group_arrays">
         <item>A+</item>
         <item>A-</item>
+        <item>A1B+</item>
+        <item>A1B-</item>
+        <item>A2+</item>
+        <item>A2-</item>
+        <item>A2B+</item>
+        <item>A2B-</item>
         <item>B+</item>
         <item>B-</item>
         <item>AB+</item>
