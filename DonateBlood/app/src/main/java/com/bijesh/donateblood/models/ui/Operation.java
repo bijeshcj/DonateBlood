@@ -9,7 +9,7 @@ public abstract class Operation extends Observable {
     // Operation Ids
     public static enum OperationCode
     {
-        GET_MAINTENANCE_LOGS
+        SET_INSTALLATION
     }
 
     // Operation States
