@@ -7,6 +7,8 @@ import android.provider.Settings;
 import android.util.Log;
 
 import com.bijesh.donateblood.activities.HomeActivity;
+import com.bijesh.donateblood.httpwrapper.RestClientFactory;
+import com.bijesh.donateblood.httpwrapper.impl.DonateBloodRestClient;
 import com.parse.Parse;
 import com.parse.ParseACL;
 import com.parse.ParseException;
@@ -29,6 +31,10 @@ public class DonateBloodApplication extends Application {
         super.onCreate();
 
         mInstance = this;
+
+//        Volley init
+        DonateBloodRestClient lClient = (DonateBloodRestClient) RestClientFactory.getDefaultRestClient();
+        lClient.init(this);
 
 
         // Enable Local Datastore.
